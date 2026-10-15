@@ -1,0 +1,91 @@
+---
+// Experience — animated timeline
+const jobs = [
+  {
+    company: 'IBM',
+    title: 'Distinguished Engineer',
+    period: '2010 — Present',
+    location: 'Columbus, OH',
+    highlights: [
+      'Engineering leadership across AI, cloud-native, and developer tooling platforms',
+      'Architect on IBM Watson & IBM Z modernisation initiatives',
+      'Co-creator of IBM Bob — AI-powered engineering assistant',
+      'IBM Patent holder — Reverse SMT processor scheduling (US8595468)',
+    ],
+    accent: 'cyan',
+  },
+  {
+    company: 'IBM Research',
+    title: 'Senior Software Engineer',
+    period: '2002 — 2010',
+    location: 'Yorktown Heights / Austin',
+    highlights: [
+      'PowerPC pipeline trace analysis & simulator tooling (traceAnalyzer)',
+      'Reverse SMT (rSMT) — prototype through patent on processor scheduling',
+      'IBM Z performance modelling and EBCDIC/ASCII cross-platform work',
+    ],
+    accent: 'amber',
+  },
+  {
+    company: 'WINLab, Rutgers University',
+    title: 'Research Engineer',
+    period: '1998 — 2002',
+    location: 'New Brunswick, NJ',
+    highlights: [
+      'MaRTIni — Mobile and Radio Technology Interface wireless simulation (Java AWT)',
+      'Early wireless network simulation research, proto-5G concepts',
+      'Senior project: ipKangaroo 2.0 — personalized web portal with VoIP & buddy list',
+    ],
+    accent: 'cyan',
+  },
+];
+---
+
+<section id="experience" class="py-28 px-6 max-w-5xl mx-auto">
+  <div class="section-label mb-4 reveal">// experience.map()</div>
+  <h2 class="text-3xl md:text-4xl font-black mb-16 reveal">
+    The <span class="text-cyan-400">Timeline</span>
+  </h2>
+
+  <div class="relative">
+    <!-- vertical line -->
+    <div class="absolute left-6 top-0 bottom-0 w-px timeline-line hidden md:block"></div>
+
+    <div class="space-y-12">
+      {jobs.map((job, i) => (
+        <div class={`relative flex gap-8 reveal`} style={`transition-delay: ${i * 120}ms`}>
+          <!-- dot -->
+          <div class="hidden md:flex flex-col items-center">
+            <div class={`w-12 h-12 rounded-full flex items-center justify-center flex-shrink-0 z-10 font-mono text-xs font-bold ${job.accent === 'cyan' ? 'bg-cyan-400/10 border border-cyan-400 text-cyan-400' : 'bg-amber-400/10 border border-amber-400 text-amber-400'}`}>
+              {String(i + 1).padStart(2, '0')}
+            </div>
+          </div>
+
+          <!-- card -->
+          <div class="flex-1 p-6 rounded-xl bg-zinc-900/60 glow-card">
+            <div class="flex flex-wrap items-start justify-between gap-2 mb-3">
+              <div>
+                <h3 class="text-xl font-bold text-zinc-100">{job.title}</h3>
+                <p class={`font-mono text-sm ${job.accent === 'cyan' ? 'text-cyan-400' : 'text-amber-400'}`}>
+                  {job.company}
+                </p>
+              </div>
+              <div class="text-right">
+                <div class="font-mono text-xs text-zinc-500">{job.period}</div>
+                <div class="text-xs text-zinc-600 mt-1">{job.location}</div>
+              </div>
+            </div>
+            <ul class="space-y-2 mt-4">
+              {job.highlights.map(h => (
+                <li class="flex gap-3 text-sm text-zinc-400">
+                  <span class={`mt-1 flex-shrink-0 w-1.5 h-1.5 rounded-full ${job.accent === 'cyan' ? 'bg-cyan-400' : 'bg-amber-400'}`}></span>
+                  {h}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

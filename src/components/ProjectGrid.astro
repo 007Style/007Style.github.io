@@ -1,0 +1,60 @@
+---
+// ProjectGrid — featured repos on the homepage (top 12 highlights)
+// Full catalogue is at /projects
+const featured = [
+  { name: 'WingmanAI', desc: '🪿 Ambient macOS AI wingman — IBM Granite + LLaVA via Ollama. Watches your screen, helps without being asked.', lang: 'Dart', url: 'https://github.com/007Style/WingmanAI', accent: 'amber' },
+  { name: 'beeMon', desc: '🐝 Beautiful native macOS system monitor — CPU per-core, memory & network with menu-bar sparkline.', lang: 'Swift', url: 'https://github.com/007Style/beeMon', accent: 'cyan' },
+  { name: 'endoshell', desc: 'A modern TUI file manager inspired by MS-DOS Shell. Written in Rust.', lang: 'Rust', url: 'https://github.com/007Style/endoshell', accent: 'amber' },
+  { name: 'deepThinkER', desc: 'AI characters with internet access, tool framework, memory, mood, relationships, and autonomous research.', lang: 'Dart', url: 'https://github.com/007Style/deepThinkER', accent: 'cyan' },
+  { name: 'procMap', desc: '3D Interactive System Process Tree Visualizer — Three.js + Python WebSockets.', lang: 'JavaScript', url: 'https://github.com/007Style/procMap', accent: 'amber' },
+  { name: 'vertexWorld', desc: 'Browser-based 3D exploration/survival game — procedural spherical planets, crafting, inter-planet travel.', lang: 'JavaScript', url: 'https://github.com/007Style/vertexWorld', accent: 'cyan' },
+  { name: 'MaRTIni-v3', desc: 'Manhattan Radio Telecommunications Interactive Network Simulator — Rust + egui.', lang: 'Rust', url: 'https://github.com/007Style/MaRTIni-v3', accent: 'amber' },
+  { name: 'solarView', desc: '☀️ Real-time SolarEdge inverter & battery monitoring — Modbus TCP, live charts, no cloud required.', lang: 'Python', url: 'https://github.com/007Style/solarView', accent: 'cyan' },
+  { name: 'pulse', desc: 'A gorgeous, live-refreshing system status dashboard — right in your terminal.', lang: 'Swift', url: 'https://github.com/007Style/pulse', accent: 'amber' },
+  { name: 'qcrypt', desc: 'Quantum-safe file encryption — ML-KEM-768 + Argon2id + AES-256-GCM, fully self-contained.', lang: 'C', url: 'https://github.com/007Style/qcrypt', accent: 'cyan' },
+  { name: 'DepthsOfMalachar', desc: 'Depths of Malachar — Godot dungeon crawler.', lang: 'GDScript', url: 'https://github.com/007Style/DepthsOfMalachar', accent: 'amber' },
+  { name: 'rSMTv2', desc: 'Reverse SMT processor simulator v2 — Java 21 hard fork of IBM Patent US8595468.', lang: 'Java', url: 'https://github.com/007Style/rSMTv2', accent: 'cyan' },
+];
+
+const langColor: Record<string, string> = {
+  Dart: '#54C5F8', Swift: '#F05138', Rust: '#CE422B', JavaScript: '#F7DF1E',
+  Python: '#3776AB', C: '#A8B9CC', 'GDScript': '#478CBF', Java: '#ED8B00',
+  Go: '#00ACD7', Shell: '#4EAA25', 'C++': '#F34B7D', TypeScript: '#3178C6',
+};
+---
+
+<section id="projects" class="py-28 px-6 max-w-7xl mx-auto">
+  <div class="section-label mb-4 reveal">// projects.filter(featured)</div>
+  <div class="flex items-end justify-between mb-16 reveal">
+    <h2 class="text-3xl md:text-4xl font-black">
+      Open <span class="text-cyan-400">Source</span>
+    </h2>
+    <a href="/projects"
+       class="font-mono text-xs text-zinc-500 hover:text-cyan-400 transition-colors border border-zinc-700 hover:border-cyan-400 px-4 py-2 rounded">
+      view all 69 repos →
+    </a>
+  </div>
+
+  <div class="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+    {featured.map((repo, i) => (
+      <a href={repo.url} target="_blank" rel="noopener"
+         class={`group block p-5 rounded-xl bg-zinc-900/60 glow-card ${repo.accent === 'amber' ? 'glow-amber' : ''} reveal`}
+         style={`transition-delay: ${i * 60}ms`}>
+        <div class="flex items-start justify-between mb-3">
+          <h3 class="font-mono text-sm font-semibold text-zinc-100 group-hover:text-cyan-400 transition-colors leading-tight">
+            {repo.name}
+          </h3>
+          <svg class="w-3.5 h-3.5 text-zinc-600 group-hover:text-cyan-400 transition-colors flex-shrink-0 mt-0.5 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
+          </svg>
+        </div>
+        <p class="text-xs text-zinc-500 leading-relaxed mb-4 line-clamp-3">{repo.desc}</p>
+        <div class="flex items-center gap-2 mt-auto">
+          <span class="w-2.5 h-2.5 rounded-full flex-shrink-0"
+                style={`background: ${langColor[repo.lang] ?? '#71717a'}`}></span>
+          <span class="font-mono text-xs text-zinc-600">{repo.lang}</span>
+        </div>
+      </a>
+    ))}
+  </div>
+</section>

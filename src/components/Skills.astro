@@ -1,0 +1,108 @@
+---
+// Skills — animated floating tag cloud + language rings
+const skills = {
+  'Languages': ['Swift', 'Rust', 'Go', 'Java', 'Python', 'C', 'C++', 'TypeScript', 'Dart', 'Shell', 'GDScript', 'Classic ASP'],
+  'Platforms': ['macOS', 'IBM Z', 'IBM Power', 'Linux', 'iOS', 'Firebase', 'Docker', 'Kubernetes'],
+  'Domains': ['Systems Software', 'AI/ML', 'Compiler Design', 'Processor Architecture', 'Networking', 'Cryptography', 'Game Dev', 'DSP / Audio'],
+  'Tools & Frameworks': ['SwiftUI', 'Flutter', 'Astro', 'Three.js', 'SQLAlchemy', 'Vite', 'SPM', 'Cargo', 'GSAP'],
+  'Creative': ['DJing', 'Music Production', 'Skiing', 'Game Design', 'Video'],
+};
+
+const colors: Record<string, string> = {
+  'Languages': 'cyan',
+  'Platforms': 'amber',
+  'Domains': 'cyan',
+  'Tools & Frameworks': 'amber',
+  'Creative': 'cyan',
+};
+---
+
+<section id="skills" class="py-28 px-6 max-w-6xl mx-auto">
+  <div class="section-label mb-4 reveal">// skills.enumerate()</div>
+  <h2 class="text-3xl md:text-4xl font-black mb-16 reveal">
+    The <span class="text-amber-400">Stack</span>
+  </h2>
+
+  <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+    {Object.entries(skills).map(([cat, tags], i) => {
+      const isCyan = colors[cat] === 'cyan';
+      return (
+        <div class={`p-6 rounded-xl bg-zinc-900/60 glow-card reveal`} style={`transition-delay: ${i * 80}ms`}>
+          <h3 class={`font-mono text-xs uppercase tracking-widest mb-4 ${isCyan ? 'text-cyan-400' : 'text-amber-400'}`}>
+            {cat}
+          </h3>
+          <div class="flex flex-wrap gap-2">
+            {tags.map(t => (
+              <span class="tag">{t}</span>
+            ))}
+          </div>
+        </div>
+      );
+    })}
+  </div>
+
+  <!-- animated ring visualiser -->
+  <div class="mt-20 flex justify-center reveal">
+    <canvas id="ring-canvas" width="360" height="360" class="opacity-80"></canvas>
+  </div>
+</section>
+
+<script>
+(function () {
+  const canvas = document.getElementById('ring-canvas') as HTMLCanvasElement;
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d')!;
+  const cx = 180, cy = 180;
+
+  const rings = [
+    { label: 'Systems',  pct: 0.95, color: '#22d3ee', r: 150 },
+    { label: 'AI / ML',  pct: 0.85, color: '#fbbf24', r: 118 },
+    { label: 'Creative', pct: 0.78, color: '#22d3ee', r: 86  },
+    { label: 'Web',      pct: 0.70, color: '#fbbf24', r: 54  },
+  ];
+
+  let progress = 0;
+  function animate() {
+    ctx.clearRect(0, 0, 360, 360);
+    progress = Math.min(progress + 0.018, 1);
+
+    rings.forEach(ring => {
+      const end = -Math.PI / 2 + ring.pct * progress * 2 * Math.PI;
+      // track
+      ctx.beginPath();
+      ctx.arc(cx, cy, ring.r, 0, Math.PI * 2);
+      ctx.strokeStyle = 'rgba(39,39,42,0.8)';
+      ctx.lineWidth = 10;
+      ctx.stroke();
+      // fill
+      ctx.beginPath();
+      ctx.arc(cx, cy, ring.r, -Math.PI / 2, end);
+      ctx.strokeStyle = ring.color;
+      ctx.lineWidth = 10;
+      ctx.lineCap = 'round';
+      ctx.shadowColor = ring.color;
+      ctx.shadowBlur = 8;
+      ctx.stroke();
+      ctx.shadowBlur = 0;
+      // label (only when fully drawn)
+      if (progress > 0.5) {
+        const labelAngle = -Math.PI / 2 + ring.pct * 0.5 * Math.PI;
+        const lx = cx + (ring.r + 22) * Math.cos(labelAngle);
+        const ly = cy + (ring.r + 22) * Math.sin(labelAngle);
+        ctx.font = '11px JetBrains Mono, monospace';
+        ctx.fillStyle = ring.color;
+        ctx.textAlign = 'center';
+        ctx.fillText(ring.label, lx, ly);
+      }
+    });
+
+    if (progress < 1) requestAnimationFrame(animate);
+  }
+
+  // trigger when scrolled into view
+  const observer = new IntersectionObserver(entries => {
+    if (entries[0].isIntersecting) { animate(); observer.disconnect(); }
+  }, { threshold: 0.4 });
+  observer.observe(canvas);
+})();
+</script>

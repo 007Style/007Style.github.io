@@ -1,0 +1,81 @@
+---
+// Music — Apple Music DJ DaneyandO embed + section
+---
+
+<section id="music" class="py-28 px-6 max-w-5xl mx-auto">
+  <div class="section-label mb-4 reveal">// music.play()</div>
+  <h2 class="text-3xl md:text-4xl font-black mb-4 reveal">
+    DJ <span class="text-amber-400">DaneyandO</span>
+  </h2>
+  <p class="text-zinc-500 mb-16 reveal max-w-xl">
+    When the compiler compiles and the tests pass — the decks come out. Electronic, house, and everything in between.
+  </p>
+
+  <div class="grid md:grid-cols-2 gap-8 items-start">
+    <!-- Apple Music embed -->
+    <div class="reveal">
+      <div class="flex items-center gap-3 mb-5">
+        <div class="w-2 h-2 rounded-full bg-amber-400"></div>
+        <span class="font-mono text-xs text-amber-400 uppercase tracking-widest">apple music</span>
+      </div>
+      <!-- Apple Music artist embed for DJ DaneyandO -->
+      <div class="rounded-xl overflow-hidden glow-card glow-amber" style="height: 450px;">
+        <iframe
+          allow="autoplay *; encrypted-media *; fullscreen *; clipboard-write"
+          frameborder="0"
+          height="450"
+          style="width:100%;overflow:hidden;border-radius:0.75rem;background:transparent;"
+          sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-storage-access-by-user-activation allow-top-navigation-by-user-activation"
+          src="https://embed.music.apple.com/us/artist/daneyando/1641748910"
+        ></iframe>
+      </div>
+    </div>
+
+    <!-- Info card -->
+    <div class="space-y-6 reveal" style="transition-delay: 100ms">
+      <div class="p-6 rounded-xl bg-zinc-900/60 glow-card">
+        <h3 class="text-lg font-bold text-zinc-100 mb-3">The Other Side of the Stack</h3>
+        <p class="text-zinc-400 text-sm leading-relaxed">
+          Engineering and music share the same DNA — both are about systems, patterns, and knowing when to break the rules.
+          DJ DaneyandO blends deep house, electronic, and experimental beats, produced and mixed from a home studio in Columbus, OH.
+        </p>
+      </div>
+
+      <div class="p-6 rounded-xl bg-zinc-900/60 glow-card">
+        <div class="font-mono text-xs text-amber-400 mb-3 uppercase tracking-widest">find me on</div>
+        <div class="space-y-3">
+          {[
+            { label: 'Apple Music', url: 'https://music.apple.com/us/artist/daneyando/1641748910', icon: '🎵' },
+            { label: 'YouTube @daneyand', url: 'https://www.youtube.com/@daneyand', icon: '🎥' },
+          ].map(link => (
+            <a href={link.url} target="_blank" rel="noopener"
+               class="flex items-center gap-3 text-sm text-zinc-400 hover:text-amber-400 transition-colors group">
+              <span class="text-base">{link.icon}</span>
+              <span class="group-hover:underline">{link.label}</span>
+              <svg class="w-3 h-3 ml-auto opacity-40 group-hover:opacity-100 transition-opacity" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
+              </svg>
+            </a>
+          ))}
+        </div>
+      </div>
+
+      <!-- animated EQ bars -->
+      <div class="p-6 rounded-xl bg-zinc-900/60 glow-card flex items-end justify-center gap-1" style="height: 100px;">
+        {Array.from({ length: 24 }, (_, i) => (
+          <div class="eq-bar w-2 rounded-t"
+               style={`background: ${i % 3 === 0 ? '#fbbf24' : '#22d3ee'}; height: ${Math.random() * 60 + 10}px; animation: eq ${(0.4 + Math.random() * 0.6).toFixed(2)}s ease-in-out infinite alternate; animation-delay: ${(Math.random() * 0.5).toFixed(2)}s`}>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+@keyframes eq {
+  from { transform: scaleY(0.2); }
+  to   { transform: scaleY(1); }
+}
+.eq-bar { transform-origin: bottom; }
+</style>

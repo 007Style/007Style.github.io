@@ -1,0 +1,28 @@
+{
+  "name": "daneyand.github.io",
+  "type": "module",
+  "version": "0.0.1",
+  "engines": {
+    "node": ">=22.22.0"
+  },
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@tailwindcss/vite": "^4.3.3",
+    "@tsparticles/engine": "^4.4.0",
+    "@tsparticles/slim": "^4.4.0",
+    "astro": "^7.4.0",
+    "gsap": "^3.15.0",
+    "tailwindcss": "^4.3.3",
+    "tsparticles": "^4.4.0",
+    "typed.js": "^3.0.0"
+  },
+  "allowScripts": {
+    "@tsparticles/engine@4.4.0": true,
+    "fsevents@2.3.3": true
+  }
+}

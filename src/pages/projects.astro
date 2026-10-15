@@ -1,0 +1,167 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const repos = [
+  { name: 'WingmanAI', desc: '🪿 Ambient macOS AI wingman — IBM Granite + LLaVA via Ollama. Watches your screen, understands what you\'re doing, helps without being asked. 100% local.', lang: 'Dart', url: 'https://github.com/007Style/WingmanAI', topics: ['ai','ambient-ai','dart','flutter','ibm-granite','llava','local-llm','macos','ollama','screen-awareness'] },
+  { name: 'beeMon', desc: '🐝 Beautiful native macOS system monitor — CPU per-core, memory & network with menu-bar sparkline.', lang: 'Swift', url: 'https://github.com/007Style/beeMon', topics: [] },
+  { name: 'nBeeMon', desc: 'A native macOS system performance monitor — a tribute to nmon by Nigel Griffiths (IBM). Built with SwiftUI.', lang: 'Swift', url: 'https://github.com/007Style/nBeeMon', topics: [] },
+  { name: 'netBee', desc: '🐝 Native macOS network monitor — bandwidth, connections, latency. Pure Swift + SwiftUI. Zero dependencies.', lang: 'Swift', url: 'https://github.com/007Style/netBee', topics: [] },
+  { name: 'honeydue-cal-sync', desc: 'macOS menu bar app that syncs sanitised work calendar blocks to a personal/family calendar — no meeting details leak through.', lang: 'Swift', url: 'https://github.com/007Style/honeydue-cal-sync', topics: [] },
+  { name: 'beeKey', desc: 'Native macOS mechanical keyboard audio synthesizer & live WPM tray tracker (Swift/SwiftUI).', lang: 'Swift', url: 'https://github.com/007Style/beeKey', topics: [] },
+  { name: 'beeBridge', desc: 'macOS Bluetooth KVM — share keyboard, mouse, and clipboard across up to 5 Macs over BLE.', lang: 'Swift', url: 'https://github.com/007Style/beeBridge', topics: [] },
+  { name: 'memSnap', desc: 'Native macOS menu-bar memory pressure monitor with kill/focus, auto-kill rules, smart notifications, and animated About window.', lang: 'Swift', url: 'https://github.com/007Style/memSnap', topics: [] },
+  { name: 'procWatch', desc: 'Real-time macOS process start/stop monitor with color output — zero dependencies, pure Swift.', lang: 'Swift', url: 'https://github.com/007Style/procWatch', topics: [] },
+  { name: 'portWatch', desc: 'Real-time macOS menubar port security monitor.', lang: 'Swift', url: 'https://github.com/007Style/portWatch', topics: [] },
+  { name: 'diskPulse', desc: 'Real-time disk intelligence for macOS — cyberpunk menubar utility.', lang: 'Swift', url: 'https://github.com/007Style/diskPulse', topics: [] },
+  { name: 'pulse', desc: 'A gorgeous, live-refreshing system status dashboard — right in your terminal.', lang: 'Swift', url: 'https://github.com/007Style/pulse', topics: [] },
+  { name: 'endoshell', desc: 'A modern TUI file manager inspired by MS-DOS Shell, written in Rust. From the minds of IBM Bob & Daneyand.', lang: 'Rust', url: 'https://github.com/007Style/endoshell', topics: [] },
+  { name: 'MaRTIni-v3', desc: 'Manhattan Radio Telecommunications Interactive Network Simulator (Rust + egui).', lang: 'Rust', url: 'https://github.com/007Style/MaRTIni-v3', topics: [] },
+  { name: 'deepThink', desc: 'Four AI minds. One conversation. Zero internet required. Local AI conversation app powered by Ollama, built with Flutter.', lang: 'Dart', url: 'https://github.com/007Style/deepThink', topics: [] },
+  { name: 'deepThinkER', desc: 'deepThinkER — deepThink Extended Reach. AI characters with internet access, tool framework, memory, mood, relationships, autonomous research mode.', lang: 'Dart', url: 'https://github.com/007Style/deepThinkER', topics: [] },
+  { name: 'procMap', desc: '3D Interactive System Process Tree Visualizer (Three.js + Python WebSockets).', lang: 'JavaScript', url: 'https://github.com/007Style/procMap', topics: [] },
+  { name: 'vertexWorld', desc: 'Browser-based 3D exploration/building/survival game — procedural spherical planets, creatures, crafting, and inter-planet travel. Built with Three.js + Vite.', lang: 'JavaScript', url: 'https://github.com/007Style/vertexWorld', topics: [] },
+  { name: 'pong-game', desc: 'A modern Pong game built with HTML5 Canvas and vanilla JavaScript — AI opponent, sound effects, progressive difficulty.', lang: 'HTML', url: 'https://github.com/007Style/pong-game', topics: [] },
+  { name: 'solarView', desc: '☀️ Real-time SolarEdge inverter & battery monitoring — Modbus TCP, live charts, no cloud required. Beerware license.', lang: 'Python', url: 'https://github.com/007Style/solarView', topics: [] },
+  { name: 'procThumper', desc: '🔥 Cross-platform CPU · GPU · AI stress-test tool with a live dark-themed Qt UI.', lang: 'Python', url: 'https://github.com/007Style/procThumper', topics: [] },
+  { name: 'solveDaCube', desc: 'Interactive ASCII terminal Rubik\'s Cube solver powered by Kociemba\'s two-phase algorithm. From the minds of IBM Bob & Daneyand.', lang: 'Python', url: 'https://github.com/007Style/solveDaCube', topics: [] },
+  { name: 'PPC2ARM', desc: 'PowerPC ↔ ARM/AArch64 Instruction Picker — Retro ISA Museum Edition.', lang: 'Python', url: 'https://github.com/007Style/PPC2ARM', topics: [] },
+  { name: 'PPC2x86', desc: 'PowerPC ↔ x86/x64 ISA Translation Station — lookup PPC and x86 instruction analogues with a retro ISA Museum GUI.', lang: 'Python', url: 'https://github.com/007Style/PPC2x86', topics: [] },
+  { name: 'qrTxtGen', desc: 'Generate QR codes in your terminal — standalone binaries, no dependencies.', lang: 'Python', url: 'https://github.com/007Style/qrTxtGen', topics: [] },
+  { name: 'qcrypt', desc: 'Quantum-safe file & directory encryption for macOS — ML-KEM-768 + Argon2id + AES-256-GCM, fully self-contained.', lang: 'C', url: 'https://github.com/007Style/qcrypt', topics: [] },
+  { name: 'banner', desc: 'Print large block-character text to the terminal — POSIX-compliant C99, zero dependencies, single binary.', lang: 'C', url: 'https://github.com/007Style/banner', topics: [] },
+  { name: 'netPing', desc: 'Real-time ICMP ping monitor with CLI and interactive TUI modes — C++17, Linux/macOS/Windows.', lang: 'C++', url: 'https://github.com/007Style/netPing', topics: [] },
+  { name: 'cowntdown', desc: 'A snazzy, dubiously-useful terminal countdown timer. Kinda useless, but fun!', lang: 'C', url: 'https://github.com/007Style/cowntdown', topics: [] },
+  { name: 'piKill', desc: 'Compute π forever. From the minds of IBM Bob & Daneyand.', lang: 'Go', url: 'https://github.com/007Style/piKill', topics: [] },
+  { name: 'piKillView', desc: 'Graphical π computation viewer. From the minds of IBM Bob & Daneyand.', lang: 'Go', url: 'https://github.com/007Style/piKillView', topics: [] },
+  { name: 'DepthsOfMalachar', desc: 'Depths of Malachar - Godot dungeon crawler.', lang: 'GDScript', url: 'https://github.com/007Style/DepthsOfMalachar', topics: [] },
+  { name: 'rSMTv2', desc: 'Reverse SMT processor simulator v2 — modernized Java 21 hard fork of rSMT (IBM Patent US8595468).', lang: 'Java', url: 'https://github.com/007Style/rSMTv2', topics: [] },
+  { name: 'rSMT', desc: 'Reverse SMT processor simulator — IBM Patent US8595468.', lang: 'Java', url: 'https://github.com/007Style/rSMT', topics: [] },
+  { name: 'MaRTIni-v2', desc: 'MaRTIni v2 — Modernized Java 22 wireless simulation GUI. Evolution of the 1998-1999 WINLab Rutgers prototype.', lang: 'Java', url: 'https://github.com/007Style/MaRTIni-v2', topics: [] },
+  { name: 'MaRTIni-v1', desc: 'Mobile and Radio Technology Interface — Java AWT wireless simulation prototype, WINLab Rutgers University, 1998-1999.', lang: 'Java', url: 'https://github.com/007Style/MaRTIni-v1', topics: [] },
+  { name: 'traceAnalyzer', desc: 'IBM PowerPC processor trace file analyzer — converts .TRACER simulator output to color-coded HTML pipeline visualization (Java, 2002).', lang: 'Scilab', url: 'https://github.com/007Style/traceAnalyzer', topics: [] },
+  { name: 'ipKangaroo', desc: 'ipKangaroo — personalized web portal with buddy list, VoIP, news/sports/weather.', lang: 'Java', url: 'https://github.com/007Style/ipKangaroo', topics: [] },
+  { name: 'ipKweb2.0', desc: 'ipKangaroo 2.0 — personalized web portal with buddy list, VoIP, news/sports/weather/TV widgets. Rutgers University Senior Project, 2001.', lang: 'Classic ASP', url: 'https://github.com/007Style/ipKweb2.0', topics: [] },
+  { name: 'acornEncrypt', desc: 'Java symmetric encryption sandbox — DES, Blowfish, and Chilkat library demos.', lang: 'Java', url: 'https://github.com/007Style/acornEncrypt', topics: [] },
+  { name: 'echoAppSSL', desc: 'Java SSL/TLS echo client-server demo using javax.net.ssl with object serialisation.', lang: 'Java', url: 'https://github.com/007Style/echoAppSSL', topics: [] },
+  { name: 'socks', desc: 'TCP/IP socket programming learning projects circa 2000 — C (POSIX sockets) and Java demos.', lang: 'Java', url: 'https://github.com/007Style/socks', topics: [] },
+  { name: 'threads', desc: 'Self-calibrating Java thread benchmark — finds optimal thread count for your CPU.', lang: 'Java', url: 'https://github.com/007Style/threads', topics: [] },
+  { name: 'java_webThreads', desc: 'Two Java utilities: a self-calibrating JVM thread-count optimizer and a bulk web keyword profiler.', lang: 'Java', url: 'https://github.com/007Style/java_webThreads', topics: [] },
+  { name: 'randomCode', desc: 'Random pieces of code used in various projects.', lang: 'Java', url: 'https://github.com/007Style/randomCode', topics: [] },
+  { name: 'JORT', desc: 'Raspberry Pi environmental sensor — AM2320 I2C + Soracom LTE + Firebase Firestore.', lang: 'JavaScript', url: 'https://github.com/007Style/JORT', topics: [] },
+  { name: 'lsdup', desc: '🔍 Fast, zero-dependency POSIX shell duplicate file finder. From the minds of IBM Bob & Daneyand.', lang: 'Shell', url: 'https://github.com/007Style/lsdup', topics: [] },
+  { name: 'lsme', desc: 'List files owned by the current user. Fast, POSIX, no bloat.', lang: 'Shell', url: 'https://github.com/007Style/lsme', topics: [] },
+  { name: 'lsnotme', desc: 'List files NOT owned by the current user. The companion to lsme. Fast, POSIX, no bloat.', lang: 'Shell', url: 'https://github.com/007Style/lsnotme', topics: [] },
+  { name: 'lsnew', desc: 'List files new or modified since the last run.', lang: 'Shell', url: 'https://github.com/007Style/lsnew', topics: [] },
+  { name: 'lsports', desc: 'List all open TCP and UDP ports with owning process — POSIX sh, zero dependencies.', lang: 'Shell', url: 'https://github.com/007Style/lsports', topics: [] },
+  { name: 'lstcp', desc: 'List all open TCP ports with owning process — POSIX sh, zero dependencies.', lang: 'Shell', url: 'https://github.com/007Style/lstcp', topics: [] },
+  { name: 'lsudp', desc: 'List all open UDP ports with owning process — POSIX sh, zero dependencies.', lang: 'Shell', url: 'https://github.com/007Style/lsudp', topics: [] },
+  { name: 'lswho', desc: 'List who is on the system — POSIX shell.', lang: 'Shell', url: 'https://github.com/007Style/lswho', topics: [] },
+  { name: 'lsyou', desc: 'List files belonging to you — POSIX shell.', lang: 'Shell', url: 'https://github.com/007Style/lsyou', topics: [] },
+  { name: 'procNow', desc: 'Instant system CPU busyness — one number, zero noise. From the minds of IBM Bob & Daneyand.', lang: 'Shell', url: 'https://github.com/007Style/procNow', topics: [] },
+  { name: 'dirwatch', desc: '👁️ Real-time directory watcher — color-coded file change events, POSIX shell, fswatch + polling backends.', lang: 'Shell', url: 'https://github.com/007Style/dirwatch', topics: [] },
+  { name: 'PostfixInstancing', desc: 'Postfix instancing utilities.', lang: 'Shell', url: 'https://github.com/007Style/PostfixInstancing', topics: [] },
+  { name: 'whiskeyDEM', desc: 'Whiskey DEM.', lang: 'Java', url: 'https://github.com/007Style/whiskeyDEM', topics: [] },
+  { name: 'CP', desc: 'CP - CapturePlayback in Java: historical early use of javax.sound.sampled.', lang: 'Java', url: 'https://github.com/007Style/CP', topics: [] },
+  { name: 'EBDIC', desc: 'Small Java utility for comparing string representations in ASCII vs EBCDIC (CP500).', lang: 'Java', url: 'https://github.com/007Style/EBDIC', topics: [] },
+  { name: 'procKiller', desc: 'Process killer utility — Java.', lang: 'Java', url: 'https://github.com/007Style/procKiller', topics: [] },
+  { name: 'stockHound', desc: 'Stock hound — Java.', lang: 'Java', url: 'https://github.com/007Style/stockHound', topics: [] },
+  { name: 'mailTester', desc: 'Mail tester utility — Java.', lang: 'Java', url: 'https://github.com/007Style/mailTester', topics: [] },
+  { name: 'randNum', desc: 'Random number utility — Java.', lang: 'Java', url: 'https://github.com/007Style/randNum', topics: [] },
+  { name: 'MiniTemplator_java', desc: 'MiniTemplator — Java.', lang: 'Java', url: 'https://github.com/007Style/MiniTemplator_java', topics: [] },
+  { name: 'PLAY', desc: 'PLAY — Java.', lang: 'Java', url: 'https://github.com/007Style/PLAY', topics: [] },
+  { name: 'UTF8', desc: 'UTF-8 utility — Java.', lang: 'Java', url: 'https://github.com/007Style/UTF8', topics: [] },
+  { name: 'threadSaver', desc: 'Thread saver — Java.', lang: 'Java', url: 'https://github.com/007Style/threadSaver', topics: [] },
+];
+
+const langColor: Record<string, string> = {
+  Dart: '#54C5F8', Swift: '#F05138', Rust: '#CE422B', JavaScript: '#F7DF1E',
+  Python: '#3776AB', C: '#A8B9CC', GDScript: '#478CBF', Java: '#ED8B00',
+  Go: '#00ACD7', Shell: '#4EAA25', 'C++': '#F34B7D', TypeScript: '#3178C6',
+  HTML: '#E34C26', Scilab: '#9B59B6', 'Classic ASP': '#71717a',
+};
+
+// Group by language
+const groups: Record<string, typeof repos> = {};
+repos.forEach(r => {
+  if (!groups[r.lang]) groups[r.lang] = [];
+  groups[r.lang].push(r);
+});
+const langOrder = ['Swift', 'Rust', 'Dart', 'Go', 'Python', 'JavaScript', 'C', 'C++', 'Java', 'Shell', 'GDScript', 'HTML', 'Scilab', 'Classic ASP'];
+const sorted = langOrder.filter(l => groups[l]).map(l => ({ lang: l, repos: groups[l] }));
+---
+
+<Layout title="Projects — Daneyand 007Style" description="All 69 open-source repositories by Daneyand DJ Singley on GitHub.">
+  <div class="pt-28 pb-20 px-6 max-w-7xl mx-auto">
+    <a href="/" class="font-mono text-xs text-zinc-600 hover:text-cyan-400 transition-colors mb-8 inline-block">← back</a>
+    <div class="section-label mb-4">// repos.loadAll()</div>
+    <h1 class="text-4xl md:text-6xl font-black mb-4">
+      All <span class="text-cyan-400">Projects</span>
+    </h1>
+    <p class="text-zinc-500 mb-16 max-w-xl font-mono text-sm">
+      {repos.length} repositories spanning Swift, Rust, Go, Java, Python, C, Dart, Shell, and more.
+      Grouped by language.
+    </p>
+
+    <!-- Language filter buttons -->
+    <div class="flex flex-wrap gap-2 mb-12" id="lang-filters">
+      <button class="lang-btn active font-mono text-xs px-4 py-2 rounded border border-cyan-400 text-cyan-400" data-lang="all">
+        all ({repos.length})
+      </button>
+      {sorted.map(g => (
+        <button class="lang-btn font-mono text-xs px-4 py-2 rounded border border-zinc-700 text-zinc-500 hover:border-zinc-500 hover:text-zinc-300 transition-colors" data-lang={g.lang}>
+          {g.lang} ({g.repos.length})
+        </button>
+      ))}
+    </div>
+
+    <!-- All cards -->
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4" id="repo-grid">
+      {repos.map((repo) => (
+        <a href={repo.url} target="_blank" rel="noopener"
+           class="repo-card group flex flex-col p-5 rounded-xl bg-zinc-900/60 glow-card reveal"
+           data-lang={repo.lang}>
+          <div class="flex items-start justify-between mb-3">
+            <h3 class="font-mono text-sm font-semibold text-zinc-100 group-hover:text-cyan-400 transition-colors leading-tight">
+              {repo.name}
+            </h3>
+            <svg class="w-3.5 h-3.5 text-zinc-600 group-hover:text-cyan-400 transition-colors flex-shrink-0 mt-0.5 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
+            </svg>
+          </div>
+          <p class="text-xs text-zinc-500 leading-relaxed flex-1 mb-4">{repo.desc}</p>
+          <div class="flex items-center gap-2 mt-auto">
+            <span class="w-2.5 h-2.5 rounded-full flex-shrink-0"
+                  style={`background: ${langColor[repo.lang] ?? '#71717a'}`}></span>
+            <span class="font-mono text-xs text-zinc-600">{repo.lang}</span>
+          </div>
+        </a>
+      ))}
+    </div>
+  </div>
+</Layout>
+
+<script>
+// Language filter
+const btns = document.querySelectorAll<HTMLButtonElement>('.lang-btn');
+const cards = document.querySelectorAll<HTMLElement>('.repo-card');
+
+btns.forEach(btn => {
+  btn.addEventListener('click', () => {
+    const lang = btn.dataset.lang!;
+    btns.forEach(b => {
+      b.classList.remove('active', 'border-cyan-400', 'text-cyan-400');
+      b.classList.add('border-zinc-700', 'text-zinc-500');
+    });
+    btn.classList.add('active', 'border-cyan-400', 'text-cyan-400');
+    btn.classList.remove('border-zinc-700', 'text-zinc-500');
+
+    cards.forEach(card => {
+      if (lang === 'all' || card.dataset.lang === lang) {
+        card.style.display = 'flex';
+      } else {
+        card.style.display = 'none';
+      }
+    });
+  });
+});
+</script>

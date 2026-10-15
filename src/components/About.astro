@@ -1,0 +1,72 @@
+---
+// About — bio, headshot, lifestyle photo
+---
+
+<section id="about" class="py-28 px-6 max-w-6xl mx-auto">
+  <div class="section-label mb-4 reveal">// about.load()</div>
+  <h2 class="text-3xl md:text-5xl font-black mb-16 reveal">
+    Engineer.<br/>
+    <span class="text-cyan-400">Creator.</span><br/>
+    <span class="text-amber-400">Human.</span>
+  </h2>
+
+  <div class="grid md:grid-cols-2 gap-12 items-center">
+    <!-- Bio -->
+    <div class="space-y-6 reveal">
+      <p class="text-zinc-300 text-lg leading-relaxed">
+        I'm <strong class="text-zinc-100">Daneyand "DJ" Singley</strong> — an IBM Distinguished Engineer based in Columbus, OH. 
+        Over a career spanning three decades I've pushed the frontier of systems software, AI infrastructure, 
+        and developer tooling, working on everything from PowerPC processor pipelines to modern cloud-native platforms.
+      </p>
+      <p class="text-zinc-400 leading-relaxed">
+        When I'm not architecting distributed systems or open-sourcing tools, you'll find me behind the decks as 
+        <strong class="text-amber-400">DJ DaneyandO</strong>, carving up ski slopes, or building absurdly fun games 
+        and retro simulators just because I can.
+      </p>
+      <p class="text-zinc-400 leading-relaxed">
+        My open-source work spans Swift macOS utilities, Rust system tools, Go daemons, Python AI apps, 
+        Java legacy revivals, and game engines — because good engineers stay curious across every layer of the stack.
+      </p>
+
+      <div class="flex flex-wrap gap-3 pt-4">
+        {['IBM', 'Columbus OH', 'Systems Software', 'AI/ML', 'Open Source', 'Swift', 'Rust', 'Go', 'Java', 'Python'].map(t => (
+          <span class="tag">{t}</span>
+        ))}
+      </div>
+
+      <!-- Quick stats -->
+      <div class="grid grid-cols-3 gap-4 pt-6">
+        {[
+          { n: '30+', l: 'Years Engineering' },
+          { n: '69', l: 'GitHub Repos' },
+          { n: '∞', l: 'Coffee Consumed' },
+        ].map(s => (
+          <div class="text-center p-4 rounded-lg glow-card bg-zinc-900/60">
+            <div class="text-2xl font-black text-cyan-400 font-mono">{s.n}</div>
+            <div class="text-xs text-zinc-500 mt-1">{s.l}</div>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <!-- Photos -->
+    <div class="flex flex-col gap-5 reveal">
+      <div class="relative rounded-xl overflow-hidden glow-card">
+        <img src="/headshot.png" alt="Daneyand Singley — IBM Executive Headshot"
+             class="w-full object-cover object-top" style="max-height:380px;" />
+        <div class="absolute bottom-0 left-0 right-0 px-4 py-3"
+             style="background: linear-gradient(to top, rgba(9,9,11,0.9), transparent);">
+          <p class="font-mono text-xs text-cyan-400">IBM Distinguished Engineer</p>
+        </div>
+      </div>
+      <div class="relative rounded-xl overflow-hidden glow-card glow-amber">
+        <img src="/lifestyle.jpg" alt="Daneyand — lifestyle"
+             class="w-full object-cover" style="max-height:240px;" />
+        <div class="absolute bottom-0 left-0 right-0 px-4 py-3"
+             style="background: linear-gradient(to top, rgba(9,9,11,0.9), transparent);">
+          <p class="font-mono text-xs text-amber-400">Off the clock ⚡</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

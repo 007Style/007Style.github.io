@@ -1,0 +1,146 @@
+---
+// Hero — full-screen particle network + typewriter
+---
+
+<section id="hero" class="relative min-h-screen flex items-center justify-center overflow-hidden">
+  <!-- video bg (muted, looping, blurred) -->
+  <video
+    autoplay muted loop playsinline
+    class="absolute inset-0 w-full h-full object-cover opacity-10"
+    style="filter: blur(2px) saturate(0.4);"
+  >
+    <source src="/hero-reel.mp4" type="video/mp4" />
+  </video>
+
+  <!-- particle canvas -->
+  <canvas id="particle-canvas" class="absolute inset-0 w-full h-full pointer-events-none"></canvas>
+
+  <!-- gradient overlay -->
+  <div class="absolute inset-0" style="background: radial-gradient(ellipse at 50% 60%, rgba(34,211,238,0.06) 0%, transparent 70%), linear-gradient(to bottom, rgba(9,9,11,0.3) 0%, rgba(9,9,11,0.8) 100%);"></div>
+
+  <!-- content -->
+  <div class="relative z-10 text-center px-6 max-w-4xl mx-auto">
+    <div class="section-label mb-6">// initialising sequence</div>
+
+    <h1 class="text-5xl md:text-7xl lg:text-8xl font-black tracking-tight leading-none mb-4">
+      <span class="text-zinc-100">Daneyand</span>
+      <span class="text-cyan-400"> "DJ"</span><br/>
+      <span class="text-zinc-100">Singley</span>
+    </h1>
+
+    <div class="mt-6 mb-10 h-8 flex items-center justify-center">
+      <span class="font-mono text-lg md:text-xl text-zinc-300" id="typed-target"></span>
+    </div>
+
+    <div class="flex flex-wrap gap-3 justify-center items-center mt-8">
+      <a href="#about"
+         class="px-6 py-3 text-sm font-mono font-semibold rounded border border-cyan-400 text-cyan-400 hover:bg-cyan-400 hover:text-zinc-950 transition-all duration-200">
+        explore.init()
+      </a>
+      <a href="https://github.com/007Style" target="_blank" rel="noopener"
+         class="px-6 py-3 text-sm font-mono font-semibold rounded border border-zinc-600 text-zinc-400 hover:border-zinc-400 hover:text-zinc-100 transition-all duration-200">
+        github →
+      </a>
+    </div>
+
+    <!-- scroll hint -->
+    <div class="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-zinc-600">
+      <span class="font-mono text-xs">scroll</span>
+      <div class="w-px h-12 bg-gradient-to-b from-zinc-600 to-transparent animate-pulse"></div>
+    </div>
+  </div>
+</section>
+
+<script>
+// ── Particle network ──────────────────────────────────────────────────────
+(function () {
+  const canvas = document.getElementById('particle-canvas') as HTMLCanvasElement;
+  const ctx = canvas.getContext('2d')!;
+  let W = 0, H = 0;
+  const CYAN = '34,211,238';
+  const AMBER = '251,191,36';
+  const PARTICLE_COUNT = 90;
+
+  interface P { x:number; y:number; vx:number; vy:number; r:number; c:string; }
+  let particles: P[] = [];
+
+  function resize() {
+    W = canvas.width = window.innerWidth;
+    H = canvas.height = window.innerHeight;
+  }
+
+  function init() {
+    particles = Array.from({ length: PARTICLE_COUNT }, () => ({
+      x: Math.random() * W,
+      y: Math.random() * H,
+      vx: (Math.random() - 0.5) * 0.4,
+      vy: (Math.random() - 0.5) * 0.4,
+      r: Math.random() * 1.8 + 0.6,
+      c: Math.random() > 0.85 ? AMBER : CYAN,
+    }));
+  }
+
+  function draw() {
+    ctx.clearRect(0, 0, W, H);
+    // connections
+    for (let i = 0; i < particles.length; i++) {
+      for (let j = i + 1; j < particles.length; j++) {
+        const dx = particles[i].x - particles[j].x;
+        const dy = particles[i].y - particles[j].y;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+        if (dist < 120) {
+          ctx.beginPath();
+          ctx.strokeStyle = `rgba(${particles[i].c},${0.15 * (1 - dist / 120)})`;
+          ctx.lineWidth = 0.6;
+          ctx.moveTo(particles[i].x, particles[i].y);
+          ctx.lineTo(particles[j].x, particles[j].y);
+          ctx.stroke();
+        }
+      }
+    }
+    // dots
+    particles.forEach(p => {
+      p.x += p.vx; p.y += p.vy;
+      if (p.x < 0 || p.x > W) p.vx *= -1;
+      if (p.y < 0 || p.y > H) p.vy *= -1;
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(${p.c},0.7)`;
+      ctx.fill();
+    });
+    requestAnimationFrame(draw);
+  }
+
+  window.addEventListener('resize', () => { resize(); init(); });
+  resize(); init(); draw();
+})();
+
+// ── Typewriter ────────────────────────────────────────────────────────────
+const phrases = [
+  'IBM Distinguished Engineer',
+  'Open-Source Builder',
+  'DJ · Music Producer',
+  'Ski Fanatic ⛷',
+  'Based in Columbus, OH',
+  'From the minds of IBM Bob & Daneyand',
+];
+let pi = 0, ci = 0, deleting = false;
+const el = document.getElementById('typed-target')!;
+
+function typeLoop() {
+  const word = phrases[pi];
+  if (!deleting) {
+    el.textContent = word.slice(0, ci + 1);
+    ci++;
+    if (ci === word.length) { deleting = true; setTimeout(typeLoop, 2200); return; }
+    setTimeout(typeLoop, 55);
+  } else {
+    el.textContent = word.slice(0, ci - 1);
+    ci--;
+    if (ci === 0) { deleting = false; pi = (pi + 1) % phrases.length; setTimeout(typeLoop, 400); return; }
+    setTimeout(typeLoop, 28);
+  }
+}
+el.textContent = '';
+setTimeout(typeLoop, 800);
+</script>
