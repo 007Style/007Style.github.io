@@ -1,5 +1,35 @@
 ---
-// Music — Apple Music DJ DaneyandO embed + section
+// Music — DJ DaneyandO across all platforms
+const platforms = [
+  {
+    label: 'Apple Music',
+    handle: 'DJ DaneyandO',
+    url: 'https://music.apple.com/us/artist/dj-daneyando/6812402003',
+    accent: 'cyan',
+    icon: `<svg viewBox="0 0 24 24" fill="currentColor"><path d="M23.994 6.124a9.23 9.23 0 0 0-.24-2.19c-.317-1.31-1.062-2.31-2.18-3.043a5.022 5.022 0 0 0-1.877-.726 10.496 10.496 0 0 0-1.564-.15c-.04-.003-.083-.01-.124-.013H5.986c-.152.01-.303.017-.455.026C4.786.07 4.043.15 3.34.428 2.004.958 1.04 1.88.475 3.208a5.485 5.485 0 0 0-.36 1.548c-.048.575-.068 1.15-.066 1.728v13.184c.003.52.03 1.04.11 1.555.165 1.03.57 1.952 1.278 2.73.65.71 1.46 1.155 2.37 1.38.56.14 1.13.2 1.706.22.14.01.28.01.42.01h13.17c.52-.01 1.04-.05 1.55-.14 1.01-.19 1.92-.59 2.68-1.28.67-.62 1.1-1.38 1.34-2.25.12-.44.18-.9.2-1.36.02-.35.03-.7.03-1.05V7.8c0-.56-.01-1.12-.06-1.676zM8.207 14.915c-.68.001-1.321-.213-1.879-.56-.63-.397-1.059-.96-1.243-1.69-.184-.73-.11-1.44.214-2.123.32-.68.83-1.17 1.514-1.47.45-.2.92-.28 1.41-.27.17.004.34.016.51.03v-5.63l8.036-1.64v5.78l-.056.083a2.87 2.87 0 0 1-.087.075l-.014.011a2.2 2.2 0 0 1-.1.073l-.018.011a2.3 2.3 0 0 1-.116.066l-.024.012a2.3 2.3 0 0 1-.13.053l-.03.01a2.4 2.4 0 0 1-.146.04l-.035.006a2.5 2.5 0 0 1-.16.024c-.035.004-.072.005-.175.007H12.3v5.42c.006.27-.02.54-.077.807-.22 1.03-.9 1.75-1.87 2.1-.38.14-.775.21-1.147.21z"/></svg>`,
+  },
+  {
+    label: 'Spotify',
+    handle: 'DJ DaneyandO',
+    url: 'https://open.spotify.com/artist/3NnwCJeSMQUYptmgniqvzS',
+    accent: 'amber',
+    icon: `<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z"/></svg>`,
+  },
+  {
+    label: 'Amazon Music',
+    handle: 'DJ DaneyandO',
+    url: 'https://music.amazon.com/artists/B0HJX1P31L/dj-daneyando',
+    accent: 'cyan',
+    icon: `<svg viewBox="0 0 24 24" fill="currentColor"><path d="M13.958 10.09c0 1.232.029 2.256-.591 3.351-.502.891-1.301 1.438-2.186 1.438-1.214 0-1.922-.924-1.922-2.292 0-2.692 2.415-3.182 4.7-3.182v.685zm3.186 7.705c-.209.189-.512.201-.745.076-1.045-.868-1.234-1.272-1.814-2.099-1.733 1.767-2.96 2.297-5.207 2.297-2.658 0-4.728-1.641-4.728-4.925 0-2.565 1.39-4.309 3.37-5.164 1.715-.754 4.11-.891 5.942-1.097v-.41c0-.753.06-1.642-.383-2.294-.385-.579-1.124-.82-1.775-.82-1.205 0-2.277.618-2.54 1.897-.054.285-.261.567-.549.582l-3.061-.333c-.259-.056-.548-.266-.472-.662C5.718 1.739 8.55.63 11.031.63c1.282 0 2.957.342 3.969 1.312 1.281 1.19 1.159 2.79 1.159 4.524v4.1c0 1.233.509 1.775 .988 2.44.168.234.205.515-.011.689l-2.992 2.1zm3.81 1.637c-.263.194-.644.217-.943.083-1.329-1.102-1.568-1.617-2.292-2.669-2.192 2.239-3.748 2.912-6.591 2.912-3.376 0-5.997-2.082-5.997-6.248 0-3.254 1.762-5.466 4.275-6.553 2.177-.956 5.214-1.13 7.537-1.39v-.52c0-.955.074-2.083-.486-2.91-.489-.734-1.427-1.038-2.252-1.038-1.527 0-2.888.783-3.222 2.407-.068.361-.331.719-.696.738l-3.88-.423c-.327-.071-.694-.337-.598-.839C5.988.929 9.64 0 12.655 0c1.624 0 3.747.433 5.03 1.665 1.626 1.509 1.47 3.536 1.47 5.737v5.197c0 1.562.647 2.25 1.254 3.094.213.297.26.653-.013.872L21 19.432z"/></svg>`,
+  },
+  {
+    label: 'YouTube Music',
+    handle: 'DJ DaneyandO',
+    url: 'https://www.youtube.com/channel/UC2hnrQa00tl6PVEYwDklP8A',
+    accent: 'amber',
+    icon: `<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.376 0 0 5.376 0 12s5.376 12 12 12 12-5.376 12-12S18.624 0 12 0zm0 19.104c-3.924 0-7.104-3.18-7.104-7.104S8.076 4.896 12 4.896s7.104 3.18 7.104 7.104-3.18 7.104-7.104 7.104zm0-13.332c-3.432 0-6.228 2.796-6.228 6.228S8.568 18.228 12 18.228s6.228-2.796 6.228-6.228S15.432 5.772 12 5.772zM9.684 15.54V8.46L15.816 12l-6.132 3.54z"/></svg>`,
+  },
+];
 ---
 
 <section id="music" class="py-28 px-6 max-w-5xl mx-auto">
@@ -8,63 +38,57 @@
     DJ <span class="text-amber-400">DaneyandO</span>
   </h2>
   <p class="text-zinc-500 mb-16 reveal max-w-xl">
-    When the compiler compiles and the tests pass — the decks come out. Electronic, house, and everything in between.
+    When the compiler compiles and the tests pass — the decks come out.
+    Electronic, house, and everything in between. Find the music everywhere you stream.
   </p>
 
   <div class="grid md:grid-cols-2 gap-8 items-start">
-    <!-- Apple Music embed -->
+    <!-- Apple Music embed (primary) -->
     <div class="reveal">
       <div class="flex items-center gap-3 mb-5">
-        <div class="w-2 h-2 rounded-full bg-amber-400"></div>
-        <span class="font-mono text-xs text-amber-400 uppercase tracking-widest">apple music</span>
+        <div class="w-2 h-2 rounded-full bg-cyan-400"></div>
+        <span class="font-mono text-xs text-cyan-400 uppercase tracking-widest">apple music</span>
       </div>
-      <!-- Apple Music artist embed for DJ DaneyandO -->
-      <div class="rounded-xl overflow-hidden glow-card glow-amber" style="height: 450px;">
+      <div class="rounded-xl overflow-hidden glow-card" style="height: 450px;">
         <iframe
           allow="autoplay *; encrypted-media *; fullscreen *; clipboard-write"
           frameborder="0"
           height="450"
           style="width:100%;overflow:hidden;border-radius:0.75rem;background:transparent;"
           sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-storage-access-by-user-activation allow-top-navigation-by-user-activation"
-          src="https://embed.music.apple.com/us/artist/daneyando/1641748910"
+          src="https://embed.music.apple.com/us/artist/dj-daneyando/6812402003"
         ></iframe>
       </div>
     </div>
 
-    <!-- Info card -->
-    <div class="space-y-6 reveal" style="transition-delay: 100ms">
-      <div class="p-6 rounded-xl bg-zinc-900/60 glow-card">
-        <h3 class="text-lg font-bold text-zinc-100 mb-3">The Other Side of the Stack</h3>
-        <p class="text-zinc-400 text-sm leading-relaxed">
-          Engineering and music share the same DNA — both are about systems, patterns, and knowing when to break the rules.
-          DJ DaneyandO blends deep house, electronic, and experimental beats, produced and mixed from a home studio in Columbus, OH.
-        </p>
-      </div>
+    <!-- Right column: all platforms + EQ -->
+    <div class="space-y-4 reveal" style="transition-delay: 100ms">
+      <div class="font-mono text-xs text-zinc-500 uppercase tracking-widest mb-2">stream everywhere</div>
 
-      <div class="p-6 rounded-xl bg-zinc-900/60 glow-card">
-        <div class="font-mono text-xs text-amber-400 mb-3 uppercase tracking-widest">find me on</div>
-        <div class="space-y-3">
-          {[
-            { label: 'Apple Music', url: 'https://music.apple.com/us/artist/daneyando/1641748910', icon: '🎵' },
-            { label: 'YouTube @daneyand', url: 'https://www.youtube.com/@daneyand', icon: '🎥' },
-          ].map(link => (
-            <a href={link.url} target="_blank" rel="noopener"
-               class="flex items-center gap-3 text-sm text-zinc-400 hover:text-amber-400 transition-colors group">
-              <span class="text-base">{link.icon}</span>
-              <span class="group-hover:underline">{link.label}</span>
-              <svg class="w-3 h-3 ml-auto opacity-40 group-hover:opacity-100 transition-opacity" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
-              </svg>
-            </a>
-          ))}
-        </div>
-      </div>
+      {platforms.map(p => {
+        const isCyan = p.accent === 'cyan';
+        return (
+          <a href={p.url} target="_blank" rel="noopener"
+             class={`group flex items-center gap-4 p-4 rounded-xl bg-zinc-900/60 glow-card ${!isCyan ? 'glow-amber' : ''} transition-all`}>
+            <div class={`w-10 h-10 flex-shrink-0 rounded-lg flex items-center justify-center ${isCyan ? 'text-cyan-400 bg-cyan-400/10' : 'text-amber-400 bg-amber-400/10'} group-hover:scale-110 transition-transform`}
+                 set:html={p.icon}>
+            </div>
+            <div class="min-w-0">
+              <div class="text-sm font-semibold text-zinc-100">{p.label}</div>
+              <div class={`font-mono text-xs mt-0.5 ${isCyan ? 'text-cyan-500' : 'text-amber-500'}`}>{p.handle}</div>
+            </div>
+            <svg class="w-3.5 h-3.5 text-zinc-700 group-hover:text-zinc-400 transition-colors ml-auto flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
+            </svg>
+          </a>
+        );
+      })}
 
       <!-- animated EQ bars -->
-      <div class="p-6 rounded-xl bg-zinc-900/60 glow-card flex items-end justify-center gap-1" style="height: 100px;">
-        {Array.from({ length: 24 }, (_, i) => (
-          <div class="eq-bar w-2 rounded-t"
-               style={`background: ${i % 3 === 0 ? '#fbbf24' : '#22d3ee'}; height: ${Math.random() * 60 + 10}px; animation: eq ${(0.4 + Math.random() * 0.6).toFixed(2)}s ease-in-out infinite alternate; animation-delay: ${(Math.random() * 0.5).toFixed(2)}s`}>
+      <div class="p-5 rounded-xl bg-zinc-900/60 glow-card flex items-end justify-center gap-1 mt-2" style="height: 80px;">
+        {Array.from({ length: 28 }, (_, i) => (
+          <div class="eq-bar w-1.5 rounded-t"
+               style={`background: ${i % 3 === 0 ? '#fbbf24' : '#22d3ee'}; height: ${Math.random() * 50 + 8}px; animation: eq ${(0.3 + Math.random() * 0.7).toFixed(2)}s ease-in-out infinite alternate; animation-delay: ${(Math.random() * 0.6).toFixed(2)}s`}>
           </div>
         ))}
       </div>
@@ -74,7 +98,7 @@
 
 <style>
 @keyframes eq {
-  from { transform: scaleY(0.2); }
+  from { transform: scaleY(0.15); }
   to   { transform: scaleY(1); }
 }
 .eq-bar { transform-origin: bottom; }
