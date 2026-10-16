@@ -1,5 +1,5 @@
 ---
-// Career — full career arc + patents
+// Career — full career arc, awards, patents, publications
 
 const patents = [
   {
@@ -7,48 +7,112 @@ const patents = [
     title: 'Reverse Simultaneous Multi-Threading',
     year: '2013',
     filed: '2011',
-    assignee: 'IBM',
-    description: 'A processor scheduling technique that inverts traditional SMT resource allocation — enabling fine-grained control over thread priority and power/performance trade-offs in multi-core processors.',
+    assignee: 'IBM Corporation',
+    description: 'A hardware patent describing a novel processor scheduling technique that inverts traditional SMT resource allocation — enabling fine-grained control over thread priority and power/performance trade-offs in multi-core processors. Basis of the rSMT and rSMTv2 open-source simulators on GitHub.',
     url: 'https://patents.google.com/patent/US8595468B2',
-    confirmed: true,
+    award: 'IBM Hero Patent · First Plateau Invention Achievement Award',
+    type: 'Hardware / Processor Architecture',
+  },
+  {
+    number: 'Pending lookup',
+    title: 'Method to Identify and Generate Critical Timing Path Test Vectors',
+    year: 'c. 2004–2008',
+    filed: 'c. 2003–2007',
+    assignee: 'IBM Corporation',
+    description: 'A hardware engineering patent covering automated identification and generation of critical timing path test vectors for processor validation — directly supporting IBM PowerPC chip verification workflows at IBM Research.',
+    url: 'https://patents.google.com/search?q=inventor:Singley+assignee:IBM+timing+path',
+    award: 'First Patent Application Invention Achievement Award',
+    type: 'Hardware / Chip Verification',
   },
 ];
 
-const careerEras = [
+const awards = [
+  { title: 'IBM Hero Patent', detail: 'IBM\'s highest recognition for a patent with exceptional strategic or technical impact.', accent: 'amber' },
+  { title: 'IBM 100% Club Award', detail: 'Sales & technical excellence recognition for exceeding 100% of annual quota targets. Awarded multiple times.', accent: 'cyan' },
+  { title: 'First Plateau — Invention Achievement Award', detail: 'Recognised for creative contributions to IBM\'s IP portfolio — awarded upon first patent plateau milestone.', accent: 'amber' },
+  { title: 'First Patent Application Invention Achievement Award', detail: 'Awarded for the first filed patent application: Method to Identify and Generate Critical Timing Path Test Vectors.', accent: 'cyan' },
+  { title: 'IBM Influencer 2025', detail: 'Recognised as an IBM Influencer for technical thought leadership, community impact, and external visibility.', accent: 'amber' },
+];
+
+const publications = [
   {
-    era: 'Foundation',
-    period: '1998 – 2002',
-    accent: 'amber',
-    chapters: [
-      {
-        role: 'Research Engineer',
-        org: 'WINLab, Rutgers University',
-        detail: 'Wireless networking research at one of the premier mobile computing labs in the US. Built MaRTIni — a Java AWT wireless simulation prototype that modelled mobile radio topology and frequency allocation. Co-authored early-Internet portal ipKangaroo with real-time VoIP, buddy list, and widget aggregation — a Senior project that predated social media by years.',
-      },
-    ],
+    title: 'Synchronization Methods for Supporting Distributed 3D Virtual Environments in Java',
+    type: 'Publication',
+    url: 'https://www.linkedin.com/in/daneyand',
   },
   {
-    era: 'Deep Engineering',
-    period: '2002 – 2010',
+    title: 'Synchronous Collaborative Systems for Distributed Virtual Environments in Java',
+    type: 'Publication',
+    url: 'https://www.linkedin.com/in/daneyand',
+  },
+  {
+    title: 'Method for Programming and Eliminating Data Structure Design',
+    type: 'Publication',
+    url: 'https://www.linkedin.com/in/daneyand',
+  },
+];
+
+const roles = [
+  {
+    title: 'Field CTO',
+    company: 'IBM',
+    companyUrl: 'https://ibm.com',
+    period: '2010 — Present',
+    location: 'Columbus, OH',
     accent: 'cyan',
-    chapters: [
-      {
-        role: 'Senior Hardware & Software Engineer',
-        org: 'IBM Research',
-        detail: 'Embedded in IBM\'s processor architecture group working on PowerPC pipeline performance, simulator tooling, and hardware/software co-design. Built traceAnalyzer — a Java tool that parsed raw .TRACER simulator output and produced colour-coded pipeline visualisations for IBM engineers. Invented Reverse SMT (rSMT), a novel thread scheduling technique for multi-core processors that earned IBM Patent US8595468B2. Deep work in EBCDIC/ASCII interoperability for IBM Z systems, SSL/TLS secure socket engineering, and JVM performance characterisation.',
-      },
+    highlights: [
+      'Field-facing technology leadership bridging IBM\'s product portfolio — Storage, Power Systems, IBM Z, AI, and OpenShift — with customer transformation strategies',
+      'Architect on IBM Watson, IBM Z modernisation, and cloud-native developer tooling initiatives',
+      'Represented IBM at IBM TechXchange 2025 (Orlando, ~10,000 attendees) covering AI and OpenShift themes',
+      'Co-creator of IBM Bob — an AI-powered engineering assistant used daily by IBM engineers worldwide',
+      'IBM Influencer 2025 — recognised for technical thought leadership and external visibility',
+      'Speaker and evangelist: IBM Storage FlashCore Module, IBM Power11, IBM Fusion (OpenShift appliance)',
+      '69 personal open-source repositories spanning Swift, Rust, Go, Python, Java, C, Dart — driving open-source culture within IBM',
     ],
   },
   {
-    era: 'Platform & AI Leadership',
-    period: '2010 – Present',
+    title: 'Field CTO / Senior Technical Sales Leader',
+    company: 'MAPSYS',
+    companyUrl: 'https://www.linkedin.com/in/daneyand',
+    period: '(concurrent with IBM role)',
+    location: 'Columbus, OH',
     accent: 'amber',
-    chapters: [
-      {
-        role: 'Field CTO',
-        org: 'IBM',
-        detail: 'Technology leadership at IBM scale — bridging advanced engineering, AI strategy, and customer transformation. Hands-on architect across IBM Watson, IBM Z modernisation, and cloud-native developer tooling. Co-creator of IBM Bob, an AI-powered engineering assistant that hundreds of IBM engineers now use daily. Drives open-source culture within IBM, with 69 personal GitHub repositories spanning Swift, Rust, Go, Python, Java, C, Dart, and more.',
-      },
+    highlights: [
+      'MAPSYS is a premier IBM Business Partner — Daneyand serves as a bridge between MAPSYS customers and IBM\'s technology portfolio',
+      'Hosts annual MAPSYS customer appreciation events (Columbus Blue Jackets arena)',
+      'Technical leadership across IBM Storage, IBM Power, and IBM Z customer engagements',
+      'IBM 100% Club Award recipient — multiple times — for consistently exceeding technical sales targets',
+    ],
+  },
+  {
+    title: 'Senior Hardware & Software Engineer',
+    company: 'IBM Research',
+    companyUrl: 'https://research.ibm.com',
+    period: '2002 — 2010',
+    location: 'Yorktown Heights, NY · Austin, TX',
+    accent: 'cyan',
+    highlights: [
+      'Embedded in IBM\'s processor architecture group — PowerPC hardware pipeline design, performance characterisation, and hardware/software co-design',
+      'Invented Reverse SMT (rSMT): a hardware threading technique for multi-core processors that earned IBM Patent US8595468B2 and IBM\'s Hero Patent award',
+      'Filed second patent: Method to Identify and Generate Critical Timing Path Test Vectors — automated hardware test vector generation for PowerPC chip verification',
+      'Built traceAnalyzer (Java) — parsed raw .TRACER IBM simulator output into colour-coded HTML pipeline visualisations used by IBM chip engineers',
+      'Deep work in IBM Z EBCDIC/ASCII interoperability, SSL/TLS secure socket engineering, and JVM thread performance characterisation',
+      'Published three research papers on distributed 3D virtual environments and Java data structure design (Rutgers / IBM Research era)',
+    ],
+  },
+  {
+    title: 'Research Engineer',
+    company: 'WINLab — Rutgers University',
+    companyUrl: 'https://winlab.rutgers.edu',
+    period: '1998 — 2002',
+    location: 'New Brunswick, NJ',
+    accent: 'amber',
+    highlights: [
+      'Wireless networking research at WINLab, one of the premier mobile computing labs in the US — proto-5G wireless topology and frequency allocation simulation',
+      'Built MaRTIni v1 — Mobile and Radio Technology Interface (Java AWT), a wireless network simulator modelling mobile radio behaviour',
+      'Senior project: ipKangaroo 2.0 — a fully personalised web portal with real-time VoIP, buddy list, news/sports/weather/TV widgets (Classic ASP/IIS/Access, 2001)',
+      'Published research on synchronisation methods for distributed 3D virtual environments in Java',
+      'Co-published on synchronous collaborative systems for distributed virtual environments',
     ],
   },
 ];
@@ -57,13 +121,13 @@ const milestones = [
   { year: '1998', label: 'WINLab research begins', accent: 'amber' },
   { year: '2001', label: 'ipKangaroo — Rutgers Senior Project', accent: 'cyan' },
   { year: '2002', label: 'Joins IBM Research', accent: 'amber' },
-  { year: '2002', label: 'traceAnalyzer ships internally', accent: 'cyan' },
-  { year: '2011', label: 'rSMT patent filed', accent: 'amber' },
-  { year: '2013', label: 'US8595468B2 granted', accent: 'cyan' },
-  { year: '2015', label: 'GitHub joins', accent: 'amber' },
+  { year: '2003', label: '1st patent application filed (timing path)', accent: 'cyan' },
+  { year: '2010', label: 'Moves to IBM Field CTO + MAPSYS', accent: 'amber' },
+  { year: '2011', label: 'rSMT patent filed', accent: 'cyan' },
+  { year: '2013', label: 'US8595468B2 granted · IBM Hero Patent', accent: 'amber' },
   { year: '2024', label: 'IBM Bob co-created', accent: 'cyan' },
-  { year: '2025', label: 'WingmanAI ships', accent: 'amber' },
-  { year: '2026', label: '69 public repos & counting', accent: 'cyan' },
+  { year: '2025', label: 'IBM Influencer 2025', accent: 'amber' },
+  { year: '2026', label: '69 repos & counting', accent: 'cyan' },
 ];
 ---
 
@@ -73,48 +137,54 @@ const milestones = [
     Three Decades of<br/>
     <span class="text-cyan-400">Building Things</span>
   </h2>
-  <p class="text-zinc-500 max-w-2xl mb-20 reveal">
-    From wireless simulation research at Rutgers in 1998 to co-creating AI tools used by thousands of engineers at IBM —
-    a career defined by curiosity, hardware-to-software depth, and a refusal to stay in one lane.
+  <p class="text-zinc-500 max-w-2xl mb-20 reveal text-sm leading-relaxed">
+    From wireless simulation research at Rutgers in 1998, through IBM Research hardware engineering and processor patents,
+    to Field CTO leadership at IBM scale — a career defined by genuine depth across silicon, software, AI, and people.
   </p>
 
-  <!-- ── Career eras ── -->
-  <div class="space-y-10 mb-24">
-    {careerEras.map((era, i) => {
-      const isCyan = era.accent === 'cyan';
+  <!-- ── Roles ── -->
+  <div class="space-y-6 mb-24">
+    {roles.map((r, i) => {
+      const isCyan = r.accent === 'cyan';
       return (
-        <div class={`reveal`} style={`transition-delay:${i*100}ms`}>
-          <div class="flex items-center gap-4 mb-6">
-            <span class={`font-mono text-xs uppercase tracking-widest px-3 py-1 rounded-full border ${isCyan ? 'border-cyan-400/40 text-cyan-400 bg-cyan-400/5' : 'border-amber-400/40 text-amber-400 bg-amber-400/5'}`}>
-              {era.era}
-            </span>
-            <span class="font-mono text-xs text-zinc-600">{era.period}</span>
-          </div>
-          {era.chapters.map(ch => (
-            <div class={`p-6 rounded-xl bg-zinc-900/60 glow-card border-l-2 ${isCyan ? 'border-l-cyan-400' : 'border-l-amber-400'}`}>
-              <div class="flex flex-wrap items-baseline gap-3 mb-3">
-                <h3 class="text-lg font-bold text-zinc-100">{ch.role}</h3>
-                <span class={`font-mono text-sm ${isCyan ? 'text-cyan-400' : 'text-amber-400'}`}>@ {ch.org}</span>
+        <div class={`reveal`} style={`transition-delay:${i*80}ms`}>
+          <div class={`p-6 rounded-xl bg-zinc-900/60 glow-card border-l-2 ${isCyan ? 'border-l-cyan-400' : 'border-l-amber-400'}`}>
+            <div class="flex flex-wrap items-start justify-between gap-3 mb-4">
+              <div>
+                <h3 class="text-lg font-bold text-zinc-100">{r.title}</h3>
+                <a href={r.companyUrl} target="_blank" rel="noopener"
+                   class={`font-mono text-sm hover:underline ${isCyan ? 'text-cyan-400' : 'text-amber-400'}`}>
+                  {r.company} ↗
+                </a>
               </div>
-              <p class="text-zinc-400 leading-relaxed text-sm">{ch.detail}</p>
+              <div class="text-right">
+                <div class="font-mono text-xs text-zinc-500">{r.period}</div>
+                <div class="text-xs text-zinc-600 mt-0.5">{r.location}</div>
+              </div>
             </div>
-          ))}
+            <ul class="space-y-2">
+              {r.highlights.map(h => (
+                <li class="flex gap-3 text-sm text-zinc-400 leading-relaxed">
+                  <span class={`mt-1.5 flex-shrink-0 w-1.5 h-1.5 rounded-full ${isCyan ? 'bg-cyan-400' : 'bg-amber-400'}`}></span>
+                  {h}
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
       );
     })}
   </div>
 
-  <!-- ── Timeline milestones ── -->
+  <!-- ── Milestone timeline ── -->
   <div class="mb-24 reveal">
     <div class="section-label mb-8">// milestones.render()</div>
     <div class="relative">
-      <!-- horizontal rule -->
       <div class="absolute top-4 left-0 right-0 h-px bg-gradient-to-r from-cyan-400/40 via-amber-400/20 to-transparent hidden md:block"></div>
       <div class="grid grid-cols-2 md:grid-cols-5 gap-4">
         {milestones.map((m, i) => (
-          <div class={`relative reveal`} style={`transition-delay:${i*50}ms`}>
-            <div class={`w-2.5 h-2.5 rounded-full mb-3 hidden md:block ${m.accent === 'cyan' ? 'bg-cyan-400' : 'bg-amber-400'}`}
-                 style="box-shadow: 0 0 8px currentColor;"></div>
+          <div class="relative reveal" style={`transition-delay:${i*50}ms`}>
+            <div class={`w-2.5 h-2.5 rounded-full mb-3 hidden md:block ${m.accent === 'cyan' ? 'bg-cyan-400' : 'bg-amber-400'}`}></div>
             <div class={`font-mono text-xs font-bold mb-1 ${m.accent === 'cyan' ? 'text-cyan-400' : 'text-amber-400'}`}>{m.year}</div>
             <div class="text-xs text-zinc-500 leading-snug">{m.label}</div>
           </div>
@@ -124,50 +194,91 @@ const milestones = [
   </div>
 
   <!-- ── Patents ── -->
-  <div id="patents" class="reveal">
+  <div id="patents" class="mb-20 reveal">
     <div class="section-label mb-6">// patents.load()</div>
     <h3 class="text-2xl md:text-3xl font-black mb-3">
       IBM <span class="text-amber-400">Patents</span>
     </h3>
-    <p class="text-zinc-500 text-sm mb-10 max-w-xl">
-      Inventions recognised by the United States Patent and Trademark Office, assigned to IBM.
+    <p class="text-zinc-500 text-sm mb-8 max-w-xl">
+      Two United States patents assigned to IBM Corporation — both in hardware engineering.
     </p>
-
     <div class="space-y-4">
       {patents.map((p, i) => (
         <a href={p.url} target="_blank" rel="noopener"
-           class={`group block p-6 rounded-xl bg-zinc-900/60 glow-card reveal`}
+           class="group block p-6 rounded-xl bg-zinc-900/60 glow-card reveal"
            style={`transition-delay:${i*80}ms`}>
           <div class="flex flex-wrap items-start justify-between gap-4">
             <div class="flex-1 min-w-0">
-              <div class="flex items-center gap-3 mb-2 flex-wrap">
+              <div class="flex flex-wrap items-center gap-2 mb-2">
                 <span class="font-mono text-xs text-amber-400 border border-amber-400/30 px-2 py-0.5 rounded">
                   {p.number}
                 </span>
-                <span class="font-mono text-xs text-zinc-600">Filed {p.filed} · Granted {p.year}</span>
-                <span class="font-mono text-xs text-zinc-700">{p.assignee}</span>
+                <span class="font-mono text-xs text-zinc-600">{p.type}</span>
+                <span class="font-mono text-xs text-zinc-700">Filed {p.filed} · Granted {p.year}</span>
               </div>
-              <h4 class="text-base font-bold text-zinc-100 group-hover:text-cyan-400 transition-colors mb-2">
-                {p.title}
-              </h4>
-              <p class="text-sm text-zinc-500 leading-relaxed">{p.description}</p>
+              <h4 class="text-base font-bold text-zinc-100 group-hover:text-cyan-400 transition-colors mb-2">{p.title}</h4>
+              <p class="text-sm text-zinc-500 leading-relaxed mb-3">{p.description}</p>
+              {p.award && (
+                <div class="flex items-center gap-2">
+                  <span class="text-amber-400 text-xs">🏆</span>
+                  <span class="font-mono text-xs text-amber-500">{p.award}</span>
+                </div>
+              )}
             </div>
-            <div class="flex items-center gap-2 flex-shrink-0">
-              <span class="font-mono text-xs text-cyan-400 border border-cyan-400/30 px-3 py-1.5 rounded group-hover:bg-cyan-400/10 transition-colors">
-                USPTO →
-              </span>
-            </div>
+            <span class="font-mono text-xs text-cyan-400 border border-cyan-400/30 px-3 py-1.5 rounded group-hover:bg-cyan-400/10 transition-colors flex-shrink-0">
+              search USPTO →
+            </span>
           </div>
         </a>
       ))}
     </div>
+  </div>
 
-    <div class="mt-8 p-5 rounded-xl border border-zinc-800 bg-zinc-900/30">
-      <p class="text-xs text-zinc-600 font-mono leading-relaxed">
-        <span class="text-zinc-500">note:</span> Patent records are sourced from USPTO / Google Patents.
-        Additional filings may exist under co-inventor arrangements or pending applications.
-        The rSMTv2 open-source project on GitHub is a modernised Java 21 reimplementation of the patented technique.
-      </p>
+  <!-- ── Awards ── -->
+  <div class="mb-20 reveal">
+    <div class="section-label mb-6">// awards.enumerate()</div>
+    <h3 class="text-2xl md:text-3xl font-black mb-8">
+      <span class="text-cyan-400">Recognition</span>
+    </h3>
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+      {awards.map((a, i) => {
+        const isCyan = a.accent === 'cyan';
+        return (
+          <div class={`p-5 rounded-xl bg-zinc-900/60 glow-card reveal`} style={`transition-delay:${i*70}ms`}>
+            <div class="flex items-start gap-3 mb-3">
+              <span class="text-xl flex-shrink-0">{isCyan ? '🔵' : '🏆'}</span>
+              <h4 class={`font-semibold text-sm text-zinc-100 leading-snug`}>{a.title}</h4>
+            </div>
+            <p class="text-xs text-zinc-500 leading-relaxed">{a.detail}</p>
+          </div>
+        );
+      })}
+    </div>
+  </div>
+
+  <!-- ── Publications ── -->
+  <div class="reveal">
+    <div class="section-label mb-6">// publications.list()</div>
+    <h3 class="text-2xl md:text-3xl font-black mb-8">
+      <span class="text-amber-400">Publications</span>
+    </h3>
+    <div class="space-y-3">
+      {publications.map((pub, i) => (
+        <a href={pub.url} target="_blank" rel="noopener"
+           class="group flex items-center gap-4 p-5 rounded-xl bg-zinc-900/60 glow-card reveal"
+           style={`transition-delay:${i*60}ms`}>
+          <div class="w-8 h-8 flex-shrink-0 rounded-lg bg-amber-400/10 flex items-center justify-center text-amber-400 font-mono text-xs font-bold">
+            {String(i+1).padStart(2,'0')}
+          </div>
+          <div class="flex-1 min-w-0">
+            <p class="text-sm font-medium text-zinc-200 group-hover:text-cyan-400 transition-colors leading-snug">{pub.title}</p>
+            <p class="font-mono text-xs text-zinc-600 mt-1">{pub.type}</p>
+          </div>
+          <svg class="w-3.5 h-3.5 text-zinc-700 group-hover:text-zinc-400 transition-colors flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
+          </svg>
+        </a>
+      ))}
     </div>
   </div>
 </section>
